@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150522204212) do
+ActiveRecord::Schema.define(version: 20150523065354) do
 
   create_table "account_entries", force: :cascade do |t|
     t.float    "time",        limit: 24
@@ -30,7 +30,13 @@ ActiveRecord::Schema.define(version: 20150522204212) do
     t.string   "about",      limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "city",       limit: 255
+    t.integer  "zipcode",    limit: 4
+    t.string   "state",      limit: 255
+    t.integer  "employees",  limit: 4
   end
+
+  add_index "accounts", ["employees"], name: "index_accounts_on_employees", using: :btree
 
   create_table "employees_projects", force: :cascade do |t|
     t.integer  "employee_id", limit: 4
