@@ -3,7 +3,14 @@ class TimeEntry < AccountEntry
 
   validates :time, numericality: {greater_than: 0, less_than: 100}
 
-  def cost
-    time * 34
+  before_create :calculate_amount!
+
+  def self.per_hour
+    34
   end
+
+  def calculate_amount!
+    self.amount = TimeEntry.per_hour * self.time
+  end
+
 end
