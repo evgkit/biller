@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   #   resources :products
   resources :accounts
 
+  resources :employees do
+    resources :time_entries
+  end
+
   # Example resource route with options:
   #   resources :products do
   #     member do
